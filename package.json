@@ -1,0 +1,37 @@
+{
+  "name": "noflo-assembly-db",
+  "version": "0.1.0",
+  "description": "Reusable database components for NoFlo assembly lines",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noflo/noflo-assembly-db.git"
+  },
+  "scripts": {
+    "pretest": "./node_modules/.bin/eslint index.es6.js example/components/*.js spec/*.js && ./node_modules/.bin/babel index.es6.js --out-file index.js",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register -R spec spec/*.js"
+  },
+  "keywords": [
+    "noflo", "database"
+  ],
+  "author": "Vladimir Sibirov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noflo/noflo-assembly-db/issues"
+  },
+  "homepage": "https://github.com/noflo/noflo-assembly-db",
+  "dependencies": {
+    "noflo": "0.x >= 0.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.23.1",
+    "babel-preset-es2015": "^6.22.0",
+    "chai": "^3.5.0",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "mocha": "^3.2.0",
+    "noflo-wrapper": "^0.1.0"
+  }
+}
