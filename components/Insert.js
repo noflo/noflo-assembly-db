@@ -5,23 +5,23 @@ export class Insert extends Component {
     super({
       description: 'Inserts a database record',
       validates: {
-        'db': 'func',
+        db: 'func',
         'query.table': 'ok',
         'query.data': 'obj',
       },
     });
   }
   relay(msg, output) {
-    let returning = msg.query.returning != null ? msg.query.returning : undefined;
+    const returning = msg.query.returning != null ? msg.query.returning : undefined;
 
-    return msg.db(msg.query.table)
+    msg.db(msg.query.table)
     .insert(msg.query.data, returning)
-    .then(function(rows) {
+    .then((rows) => {
       msg.rowset = rows;
       msg.query = undefined;
       output.sendDone(msg);
-    }).catch(function(err) {
-      err.message += ' [in DbInsert]';
+    }).catch((err) => {
+      err.message += ' [in assembly-db/Insert]';
       output.sendDone(fail(msg, err));
     });
   }
