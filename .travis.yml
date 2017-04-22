@@ -7,6 +7,14 @@ before_script:
 script: npm test
 env:
   global:
-    - DATABASE_URL=postgres://postgres:@localhost/nofloassemblydb
+  - DATABASE_URL=postgres://postgres:@localhost/nofloassemblydb
 services:
-  - postgresql
+- postgresql
+deploy:
+  provider: npm
+  email: trustmaster@kodigy.com
+  api_key:
+    secure: lbZk0vIPIwIqGiR9j6xUBYaUH6rC6iU7otXTN4l+4u1aSZyOcRGDnDijvmXtzZ+91gUTnUOpuvZ/fETtKD0bh9EP6i4e8x/22+jg+3ht7tW+2UApwqkxLdGJ1CI7rSypCLSGX81fCpnmY7CvbfqDloBSydXUIcE0h1HdpSmdlXKrDovsk9WieA0O2iJRsLayaB5jGeqDBZrsADv9MenO9yA6dde2vYxhlkzezZOVEuHAnBgvvU9N84UC3AroRZUEoRvqD50tywYyT4XBWnPj71aUDY8DvI4GBz7TWf8B+nqPbo8ClNhJrU+omaxHDjQmht9srYxjSE3wSMFENZiGb+OZ9w6SEjEk1JW5+KEPM6MSm5dzsZ5q6a1byfYw7Ilp4WXPrXs6YPDYSArseKeEbQVVMTWJUPZEX7F1TD6U5FOOfqxjB8A0FY3LprfLWabqQmu55fVWwCSoFdvzKQ+klFe8EysSwPyQHHz4FHQE40Gr7v7TYYE8QqrFW4ABujeBQLhmSS/grjPVKvBi4ZyoIhut24KHTPem7DnXukU2oDKAIGImh/Jo46payM8jz09TjG1U8KC4d+P95jKX69dtzJSwUfXJt51eltV1krYcRDyWO2tFtTAn1mg2wyj1BP3jSh4WwsacGntah5JskP1qUCeR0kSET+jbeTU3CD8gTmE=
+  on:
+    tags: true
+    repo: noflo/noflo-assembly-db
