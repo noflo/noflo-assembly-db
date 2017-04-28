@@ -1,6 +1,7 @@
-import Component, { fail } from 'noflo-assembly';
+const Component = require('noflo-assembly').default;
+const fail = require('noflo-assembly').fail;
 
-export class Insert extends Component {
+class Insert extends Component {
   constructor() {
     super({
       description: 'Inserts a database record',
@@ -27,6 +28,6 @@ export class Insert extends Component {
   }
 }
 
-export function getComponent() {
+exports.getComponent = function getComponent() {
   return new Insert();
-}
+};
