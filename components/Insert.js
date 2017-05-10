@@ -22,14 +22,14 @@ class Insert extends Component {
       msg.rowset = rows;
       msg.query = undefined;
       if (!sent) {
-        output.sendDone(msg);
         sent = true;
+        output.sendDone(msg);
       }
     }).catch((err) => {
       if (!sent) {
+        sent = true;
         err.message += ' [in assembly-db/Insert]';
         output.sendDone(fail(msg, err));
-        sent = true;
       }
     });
   }
