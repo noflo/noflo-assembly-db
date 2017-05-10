@@ -4,7 +4,7 @@ import uuid from 'uuid';
 import { asCallback } from 'noflo';
 import db from './lib/db';
 
-describe('DbInsert component', () => {
+describe('Insert component', () => {
   let wrapper;
   const productData = {
     id: uuid.v4(),
