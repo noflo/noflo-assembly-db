@@ -1,14 +1,15 @@
 const Component = require('noflo-assembly').default;
 const fail = require('noflo-assembly').fail;
 
-class Insert extends Component {
+class Update extends Component {
   constructor() {
     super({
-      description: 'Inserts a database record',
+      description: 'Updates a database record',
       validates: {
         db: 'func',
         'query.table': 'ok',
         'query.data': 'obj',
+        'query.where': 'obj',
       },
     });
   }
@@ -17,7 +18,8 @@ class Insert extends Component {
 
     let sent = false;
     msg.db(msg.query.table)
-    .insert(msg.query.data, returning)
+    .update(msg.query.data, returning)
+    .where(msg.query.where)
     .then((rows) => {
       msg.rowset = rows;
       msg.query = undefined;
@@ -32,7 +34,7 @@ class Insert extends Component {
         console.error(err);
       } else {
         sent = true;
-        err.message += ' [in assembly-db/Insert]';
+        err.message += ' [in assembly-db/Update]';
         output.sendDone(fail(msg, err));
       }
     });
@@ -40,5 +42,5 @@ class Insert extends Component {
 }
 
 exports.getComponent = function getComponent() {
-  return new Insert();
+  return new Update();
 };
