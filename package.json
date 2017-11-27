@@ -8,8 +8,8 @@
     "url": "https://github.com/noflo/noflo-assembly-db.git"
   },
   "scripts": {
-    "pretest": "./node_modules/.bin/eslint components/*.js spec/*.js",
-    "test": "./node_modules/.bin/knex migrate:latest && ./node_modules/.bin/mocha --exit -R spec spec/*.js"
+    "pretest": "eslint components/*.js spec/*.js",
+    "test": "knex migrate:latest && mocha --exit -R spec spec/*.js"
   },
   "keywords": [
     "noflo",
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/noflo/noflo-assembly-db",
   "dependencies": {
     "knex": "^0.14.2",
-    "noflo": "^1.0.3",
+    "noflo": "^1.0.0",
     "noflo-assembly": "^0.1.1"
   },
   "devDependencies": {
