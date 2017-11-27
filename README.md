@@ -1,5 +1,7 @@
 # NoFlo Assembly DB
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/noflo/noflo-assembly-db.svg)](https://greenkeeper.io/)
+
 Reusable [Knex.js](http://knexjs.org/) database components for NoFlo Assembly Lines.
 
 ## Concept
