@@ -9,7 +9,7 @@
   },
   "scripts": {
     "pretest": "./node_modules/.bin/eslint components/*.js spec/*.js",
-    "test": "./node_modules/.bin/knex migrate:latest && ./node_modules/.bin/mocha -R spec spec/*.js"
+    "test": "./node_modules/.bin/knex migrate:latest && ./node_modules/.bin/mocha --exit -R spec spec/*.js"
   },
   "keywords": [
     "noflo",
