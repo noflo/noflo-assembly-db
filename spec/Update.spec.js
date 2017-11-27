@@ -1,8 +1,7 @@
-import 'mocha';
-import { expect } from 'chai';
-import uuid from 'uuid';
-import { asCallback } from 'noflo';
-import db from './lib/db';
+const { expect } = require('chai');
+const uuid = require('uuid');
+const { asCallback } = require('noflo');
+const db = require('./lib/db');
 
 describe('Update component', () => {
   let wrapper;
