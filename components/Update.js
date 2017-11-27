@@ -1,5 +1,5 @@
 const Component = require('noflo-assembly').default;
-const fail = require('noflo-assembly').fail;
+const { fail } = require('noflo-assembly');
 
 class Update extends Component {
   constructor() {
@@ -18,26 +18,26 @@ class Update extends Component {
 
     let sent = false;
     msg.db(msg.query.table)
-    .update(msg.query.data, returning)
-    .where(msg.query.where)
-    .then((rows) => {
-      msg.rowset = rows;
-      msg.query = undefined;
-      if (!sent) {
-        sent = true;
-        output.sendDone(msg);
-      }
-    })
-    .catch((err) => {
-      if (sent) {
-        // The error is likely thrown elsewhere
-        console.error(err);
-      } else {
-        sent = true;
-        err.message += ' [in assembly-db/Update]';
-        output.sendDone(fail(msg, err));
-      }
-    });
+      .update(msg.query.data, returning)
+      .where(msg.query.where)
+      .then((rows) => {
+        msg.rowset = rows;
+        msg.query = undefined;
+        if (!sent) {
+          sent = true;
+          output.sendDone(msg);
+        }
+      })
+      .catch((err) => {
+        if (sent) {
+          // The error is likely thrown elsewhere
+          console.error(err);
+        } else {
+          sent = true;
+          err.message += ' [in assembly-db/Update]';
+          output.sendDone(fail(msg, err));
+        }
+      });
   }
 }
 

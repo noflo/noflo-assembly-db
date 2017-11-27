@@ -1,8 +1,7 @@
-import 'mocha';
-import { expect } from 'chai';
-import uuid from 'uuid';
-import { asCallback } from 'noflo';
-import db from './lib/db';
+const { expect } = require('chai');
+const uuid = require('uuid');
+const { asCallback } = require('noflo');
+const db = require('./lib/db');
 
 describe('Update component', () => {
   let wrapper;
@@ -19,12 +18,12 @@ describe('Update component', () => {
     db.transaction((trx) => {
       trans = trx;
       trx('products')
-      .insert(productData, 'id')
-      .then((rows) => {
-        productData.id = rows[0];
-        done();
-      })
-      .catch(done);
+        .insert(productData, 'id')
+        .then((rows) => {
+          productData.id = rows.shift();
+          done();
+        })
+        .catch(done);
       return null;
     }).catch((e) => {
       if (e.message !== 'TestCleanUp') {
@@ -61,13 +60,13 @@ describe('Update component', () => {
       expect(msg.rowset).to.be.ok;
       expect(msg.rowset[0]).to.equal(productData.id);
       trans('products')
-      .count()
-      .where('name', updateData.name)
-      .then((rows) => {
-        expect(rows[0].count).to.equal('1');
-        done();
-      })
-      .catch(done);
+        .count()
+        .where('name', updateData.name)
+        .then((rows) => {
+          expect(rows[0].count).to.equal('1');
+          done();
+        })
+        .catch(done);
     });
   });
 

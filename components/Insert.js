@@ -1,5 +1,5 @@
 const Component = require('noflo-assembly').default;
-const fail = require('noflo-assembly').fail;
+const { fail } = require('noflo-assembly');
 
 class Insert extends Component {
   constructor() {
@@ -17,25 +17,25 @@ class Insert extends Component {
 
     let sent = false;
     msg.db(msg.query.table)
-    .insert(msg.query.data, returning)
-    .then((rows) => {
-      msg.rowset = rows;
-      msg.query = undefined;
-      if (!sent) {
-        sent = true;
-        output.sendDone(msg);
-      }
-    })
-    .catch((err) => {
-      if (sent) {
-        // The error is likely thrown elsewhere
-        console.error(err);
-      } else {
-        sent = true;
-        err.message += ' [in assembly-db/Insert]';
-        output.sendDone(fail(msg, err));
-      }
-    });
+      .insert(msg.query.data, returning)
+      .then((rows) => {
+        msg.rowset = rows;
+        msg.query = undefined;
+        if (!sent) {
+          sent = true;
+          output.sendDone(msg);
+        }
+      })
+      .catch((err) => {
+        if (sent) {
+          // The error is likely thrown elsewhere
+          console.error(err);
+        } else {
+          sent = true;
+          err.message += ' [in assembly-db/Insert]';
+          output.sendDone(fail(msg, err));
+        }
+      });
   }
 }
 
