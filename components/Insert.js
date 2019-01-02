@@ -12,6 +12,7 @@ class Insert extends Component {
       },
     });
   }
+
   relay(msg, output) {
     const returning = msg.query.returning != null ? msg.query.returning : undefined;
 
