@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/noflo/noflo-assembly-db",
   "dependencies": {
-    "knex": "^0.16.0",
+    "knex": "^0.17.0",
     "noflo": "^1.0.0",
     "noflo-assembly": "^0.2.0"
   },
