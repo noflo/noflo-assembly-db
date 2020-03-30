@@ -33,6 +33,6 @@
     "eslint-plugin-import": "^2.14.0",
     "mocha": "^6.0.0",
     "noflo-wrapper": "^0.2.1",
-    "pg": "^7.4.0"
+    "pg": "^8.0.0"
   }
 }
